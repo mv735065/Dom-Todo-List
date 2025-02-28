@@ -13,7 +13,7 @@ function storeTask(event) {
       name: value,
       isDone: false,
     };
-    
+
     allTasks.push(task);
     createUI();
     event.target.value = "";
@@ -21,25 +21,24 @@ function storeTask(event) {
 }
 
 function createUI() {
-    list.innerText='';
-    allTasks.forEach((task)=>{
-        let name=task.name;
-        let li = document.createElement("li");
-        let input = document.createElement("input");
-        input.type = "checkbox";
-        let p = document.createElement("p");
-        p.innerText = name.toString();
-        let span = document.createElement("span");
-        span.innerText = "X";
-        li.append(input, p, span);
-        li.style.display = "flex";
-        list.append(li);
-        span.addEventListener('click',(eve)=>{
-            removeTaskFromData(name);
-            li.remove();
-        })
-    })
-  
+  list.innerText = "";
+  allTasks.forEach((task) => {
+    let name = task.name;
+    let li = document.createElement("li");
+    let input = document.createElement("input");
+    input.type = "checkbox";
+    let p = document.createElement("p");
+    p.innerText = name.toString();
+    let span = document.createElement("span");
+    span.innerText = "X";
+    li.append(input, p, span);
+    li.style.display = "flex";
+    list.append(li);
+    span.addEventListener("click", (eve) => {
+      removeTaskFromData(name);
+      li.remove();
+    });
+  });
 }
 
 function removeTaskFromData(name) {

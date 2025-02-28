@@ -32,11 +32,6 @@ li {
   align-items: center;
   position: relative;
 }
-
-.list li:hover span {
-  display: block;
-}
-
 .list li span {
   position: absolute;
   right: 10px;
@@ -44,6 +39,11 @@ li {
   cursor: pointer;
   display: none;
 }
+
+.list li:hover span {
+  display: block;
+}
+
 .list li input {
   appearance: none;
   width: 30px;
@@ -53,7 +53,7 @@ li {
   cursor: pointer;
 }
 
-.list li input:checked::before {
+.list li input:checked::after {
   content: "✔";
   font-size: 25px;
   color: skyblue;
