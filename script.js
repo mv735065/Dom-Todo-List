@@ -13,40 +13,38 @@ function storeTask(event) {
       name: value,
       isDone: false,
     };
-    createUI(value);
+    
     allTasks.push(task);
+    createUI();
     event.target.value = "";
   }
 }
 
-list.addEventListener("click", (eve) => {
-  let ele = eve.target;
-  let parent = eve.target.parentElement;
-
-  if (ele.tagName.toLowerCase() === "span") {
-    let p = parent.querySelector("p");
-    let name = p.innerText;
-    removeTaskFromData(name);
-    parent.remove();
-  } 
-});
-
-function createUI(name) {
-  let li = document.createElement("li");
-  let input = document.createElement("input");
-  input.type = "checkbox";
-  let p = document.createElement("p");
-  p.innerText = name.toString();
-  let span = document.createElement("span");
-  span.innerText = "X";
-  li.append(input, p, span);
-  li.style.display = "flex";
-  list.append(li);
+function createUI() {
+    list.innerText='';
+    allTasks.forEach((task)=>{
+        let name=task.name;
+        let li = document.createElement("li");
+        let input = document.createElement("input");
+        input.type = "checkbox";
+        let p = document.createElement("p");
+        p.innerText = name.toString();
+        let span = document.createElement("span");
+        span.innerText = "X";
+        li.append(input, p, span);
+        li.style.display = "flex";
+        list.append(li);
+        span.addEventListener('click',(eve)=>{
+            removeTaskFromData(name);
+            li.remove();
+        })
+    })
+  
 }
 
 function removeTaskFromData(name) {
   let index = allTasks.findIndex((task) => task.name === name);
   if (index !== -1) {
-    allTasks.splice(index, 1); // Removes the element at the specified index
+    allTasks.splice(index, 1);
   }
 }
