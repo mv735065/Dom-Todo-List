@@ -1,0 +1,80 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  display: flex;
+  justify-content: center;
+}
+.container {
+  margin-top: 5%;
+}
+
+.container h1 {
+  color: rgb(243, 163, 163);
+  font-size: 80px;
+  font-weight: lighter;
+  display: flex;
+  justify-content: center;
+}
+.container #text,
+li {
+  padding: 20px;
+  min-width: 50vw;
+  font-size: 1.5rem;
+  border: 1px solid white;
+  box-shadow: 1px 1px 5px rgb(201, 196, 196);
+  outline: none;
+}
+
+.list li {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.list li:hover span {
+  display: block;
+}
+
+.list li span {
+  position: absolute;
+  right: 10px;
+  color: rgb(201, 196, 196);
+  cursor: pointer;
+  display: none;
+}
+.list li input {
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid rgb(201, 196, 196);
+  cursor: pointer;
+}
+
+.list li input:checked::before {
+  content: "✔";
+  font-size: 25px;
+  color: skyblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.list li input:checked + p {
+  text-decoration: line-through;
+  color: rgb(201, 196, 196);
+}
+
+.list li p {
+  position: absolute;
+  left: 70px;
+  color: rgb(131, 131, 131);
+}
+
+#text::placeholder {
+  color: rgb(223, 226, 230);
+}
